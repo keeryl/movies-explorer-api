@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 
 const movieSchema = new mongoose.Schema({
   country: {
@@ -25,17 +26,32 @@ const movieSchema = new mongoose.Schema({
   image: {
     type: String,
     required: true,
-    // url
+    validate: {
+      validator(value) {
+        return validator.isURL(value);
+      },
+      message: 'Указан неправильный адрес url для постера к фильму',
+    },
   },
   trailerLink: {
     type: String,
     required: true,
-    // ссылка на трейлер фильма. Обязательное поле-строка. Запишите её URL-адресом.
+    validate: {
+      validator(value) {
+        return validator.isURL(value);
+      },
+      message: 'Указан неправильный адрес url для трейлера к фильму',
+    },
   },
   thumbnail: {
     type: String,
     required: true,
-    // миниатюрное изображение постера к фильму. Обязательное поле-строка. Запишите её URL-адресом.
+    validate: {
+      validator(value) {
+        return validator.isURL(value);
+      },
+      message: 'Указан неправильный адрес url для миниатюры постера к фильму',
+    },
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -45,17 +61,14 @@ const movieSchema = new mongoose.Schema({
   movieId: {
     type: Number,
     required: true,
-    // id фильма, который содержится в ответе сервиса MoviesExplorer. Обязательное поле.
   },
   nameRU: {
-    // название фильма на русском языке. Обязательное поле-строка.
     type: String,
     required: true,
   },
   nameEN: {
     type: String,
     required: true,
-    // название фильма на английском языке. Обязательное поле-строка.
   }
 });
 

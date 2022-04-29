@@ -6,7 +6,7 @@ const {
 } = require('../controllers/users');
 const {
   userSchema,
-} = require('../middlewares/validationSchema');
+} = require('../utils/validationSchema');
 
 usersRouter.get('/me', getCurrentUser);
 usersRouter.patch('/me', celebrate(userSchema), updateUserProfile);

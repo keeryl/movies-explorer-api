@@ -8,7 +8,7 @@ const {
 const {
   movieSchema,
   movieIdSchema,
-} = require('../middlewares/validationSchema');
+} = require('../utils/validationSchema');
 
 usersRouter.get('/', getSavedMovies);
 usersRouter.post('/', celebrate(movieSchema), createMovie);

@@ -1,5 +1,7 @@
 const Movie = require('../models/movie');
-
+const { NotFoundError } = require('../utils/custom_errors/NotFoundError');
+const { ForbiddenError } = require('../utils/custom_errors/ForbiddenError');
+const { RequestError } = require('../utils/custom_errors/RequestError');
 
 module.exports.getSavedMovies = (req, res, next) => {
   Movie.find({})
@@ -9,10 +11,34 @@ module.exports.getSavedMovies = (req, res, next) => {
 
 module.exports.createMovie = (req, res, next) => {
   const owner = req.user._id;
-  Movie.create(req.body)
-    .then(movie => {
-
+  const {
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    thumbnail,
+    movieId,
+    nameRU,
+    nameEN
+  } = req.body
+  Movie.create({
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    thumbnail,
+    owner,
+    movieId,
+    nameRU,
+    nameEN,
     })
+    .then((movie) => res.send({ movie }))
     .catch(err => {
       if (err.name === 'ValidationError') {
         next(new RequestError('Некорректные данные при создании фильма.'));
@@ -28,8 +54,32 @@ module.exports.deleteMovie = (req, res, next) => {
       if (!movie) {
         throw new NotFoundError('Фильм с указанным id не найден.');
       }
-      return Movie.findByIdAndRemove(req.params.movieId);
+      return movie;
+    })
+    .then((movie) => {
+      if (req.user._id !== movie.owner.toString()) {
+        throw new ForbiddenError('Фильм не принадлежит пользователю');
+      }
+      return Movie.findByIdAndRemove(movie._id);
     })
     .then((deletedMovie) => res.send({ deletedMovie }))
+    .catch(next);
+};
+
+module.exports.deleteCardById = (req, res, next) => {
+  Card.findById(req.params.cardId)
+    .then((card) => {
+      if (!card) {
+        throw new NotFoundError('Карточка с указанным id не найдена.');
+      }
+      return card;
+    })
+    .then((card) => {
+      if (req.user._id !== card.owner.toString()) {
+        throw new ForbiddenError('Карточка не принадлежит пользователю');
+      }
+      return Card.findByIdAndRemove(card._id);
+    })
+    .then((deletedCard) => res.send({ deletedCard }))
     .catch(next);
 };

@@ -2,6 +2,7 @@ require('dotenv').config({ debug: true });
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 const { errors, celebrate } = require('celebrate');
 const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -14,15 +15,17 @@ const { NotFoundError } = require('./utils/custom_errors/NotFoundError');
 const {
   userSchema,
   loginSchema,
-} = require('./middlewares/validationSchema');
+} = require('./utils/validationSchema');
 
 const app = express();
-const { PORT = 3000 } = process.env;
-
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
-  useNewUrlParser: true,
-});
-
+const { PORT = 3000, DATABASE, NODE_ENV } = process.env;
+mongoose.connect(
+  NODE_ENV === 'production' ? DATABASE : 'mongodb://localhost:27017/bitfilmsdb',
+  {
+    useNewUrlParser: true,
+  }
+);
+app.use(helmet());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(requestLogger);
@@ -31,8 +34,6 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-
-
 
 app.post('/signin', celebrate(loginSchema), login);
 app.post('/signup', celebrate(userSchema), createUser);
