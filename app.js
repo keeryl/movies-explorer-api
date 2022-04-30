@@ -6,8 +6,8 @@ const helmet = require('helmet');
 const { errors, celebrate } = require('celebrate');
 const cors = require('cors');
 const rateLimiter = require('express-rate-limit');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const moviesRouter = require('./routes/movies');
 const usersRouter = require('./routes/users');
 const { errorHandler } = require('./middlewares/errorHandler');
@@ -15,7 +15,6 @@ const { NotFoundError } = require('./utils/custom_errors/NotFoundError');
 const { limiterOptions } = require('./utils/constants');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
-
 const {
   userSchema,
   loginSchema,
@@ -24,7 +23,7 @@ const {
 const app = express();
 const { PORT = 3000, DATABASE, NODE_ENV } = process.env;
 mongoose.connect(
-  NODE_ENV === 'production' ? DATABASE : 'mongodb://localhost:27017/bitfilmsdb',
+  NODE_ENV === 'production' ? `${DATABASE}` : 'mongodb://localhost:27017/bitfilmsdb',
   {
     useNewUrlParser: true,
   },
