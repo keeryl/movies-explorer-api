@@ -14,7 +14,7 @@ module.exports.createMovie = (req, res, next) => {
   const {
     country,
     director,
-    duration,
+    // duration,
     year,
     description,
     image,
@@ -24,10 +24,11 @@ module.exports.createMovie = (req, res, next) => {
     nameRU,
     nameEN,
   } = req.body;
+  const duration = Number(req.body.duration);
   Movie.create({
     country,
     director,
-    duration = parseInt(duration),
+    duration,
     year,
     description,
     image,
