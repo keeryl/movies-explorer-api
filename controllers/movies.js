@@ -27,7 +27,7 @@ module.exports.createMovie = (req, res, next) => {
   Movie.create({
     country,
     director,
-    duration,
+    duration = parseInt(duration),
     year,
     description,
     image,
