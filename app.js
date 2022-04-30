@@ -23,7 +23,9 @@ const {
 const app = express();
 const { PORT = 3000, DATABASE, NODE_ENV } = process.env;
 mongoose.connect(
-  NODE_ENV === 'production' ? `${DATABASE}` : 'mongodb://localhost:27017/bitfilmsdb',
+  NODE_ENV === 'production' ?
+  `mongodb://localhost:27017/${DATABASE}` :
+  'mongodb://localhost:27017/bitfilmsdb',
   {
     useNewUrlParser: true,
   },
