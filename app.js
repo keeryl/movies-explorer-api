@@ -21,7 +21,7 @@ const {
 } = require('./utils/validationSchema');
 
 const app = express();
-const { PORT = 3000, DATABASE, NODE_ENV } = process.env;
+const { PORT = 3000, DATABASE } = process.env;
 mongoose.connect(`mongodb://localhost:27017/${DATABASE}`,
   {
     useNewUrlParser: true,
