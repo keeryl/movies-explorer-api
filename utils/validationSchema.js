@@ -59,16 +59,16 @@ const movieSchema = {
       'string.notURL': 'Указан некорректный адрес URL',
     }),
     movieId: Joi.string().required(),
-    nameRU: Joi.string().required( ),
+    nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
   }),
-}
+};
 
 const movieIdSchema = {
   [Segments.PARAMS]: Joi.object().keys({
     movieId: Joi.string().required().length(24).hex(),
   }),
-}
+};
 
 module.exports = {
   userSchema,

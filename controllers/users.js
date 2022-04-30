@@ -46,9 +46,7 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.createUser = (req, res, next) => {
-  const {
-    name, about, avatar, email, password,
-  } = req.body;
+  const { email, password, name } = req.body;
   User.findOne({ email })
     .then((user) => {
       if (user) {
@@ -57,7 +55,7 @@ module.exports.createUser = (req, res, next) => {
       return bcrypt.hash(password.toString(), SALT_ROUNDS);
     })
     .then((hash) => User.create({
-      name, about, avatar, email, password: hash,
+      email, password: hash, name,
     }))
     .then((user) => User.findOne({ _id: user._id }))
     .then((user) => res.send({ user }))

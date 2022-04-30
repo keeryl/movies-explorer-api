@@ -5,8 +5,8 @@ const { RequestError } = require('../utils/custom_errors/RequestError');
 
 module.exports.getSavedMovies = (req, res, next) => {
   Movie.find({})
-  .then((movies) => res.send(movies))
-  .catch(next);
+    .then((movies) => res.send(movies))
+    .catch(next);
 };
 
 module.exports.createMovie = (req, res, next) => {
@@ -22,8 +22,8 @@ module.exports.createMovie = (req, res, next) => {
     thumbnail,
     movieId,
     nameRU,
-    nameEN
-  } = req.body
+    nameEN,
+  } = req.body;
   Movie.create({
     country,
     director,
@@ -37,9 +37,9 @@ module.exports.createMovie = (req, res, next) => {
     movieId,
     nameRU,
     nameEN,
-    })
+  })
     .then((movie) => res.send({ movie }))
-    .catch(err => {
+    .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new RequestError('Некорректные данные при создании фильма.'));
       } else {
@@ -63,23 +63,5 @@ module.exports.deleteMovie = (req, res, next) => {
       return Movie.findByIdAndRemove(movie._id);
     })
     .then((deletedMovie) => res.send({ deletedMovie }))
-    .catch(next);
-};
-
-module.exports.deleteCardById = (req, res, next) => {
-  Card.findById(req.params.cardId)
-    .then((card) => {
-      if (!card) {
-        throw new NotFoundError('Карточка с указанным id не найдена.');
-      }
-      return card;
-    })
-    .then((card) => {
-      if (req.user._id !== card.owner.toString()) {
-        throw new ForbiddenError('Карточка не принадлежит пользователю');
-      }
-      return Card.findByIdAndRemove(card._id);
-    })
-    .then((deletedCard) => res.send({ deletedCard }))
     .catch(next);
 };

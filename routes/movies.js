@@ -10,8 +10,8 @@ const {
   movieIdSchema,
 } = require('../utils/validationSchema');
 
-usersRouter.get('/', getSavedMovies);
-usersRouter.post('/', celebrate(movieSchema), createMovie);
-usersRouter.delete('/:movieId', celebrate(movieIdSchema), deleteMovie);
+moviesRouter.get('/', getSavedMovies);
+moviesRouter.post('/', celebrate(movieSchema), createMovie);
+moviesRouter.delete('/:movieId', celebrate(movieIdSchema), deleteMovie);
 
 module.exports = moviesRouter;
