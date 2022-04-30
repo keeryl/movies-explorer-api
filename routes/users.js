@@ -5,10 +5,10 @@ const {
   updateUserProfile,
 } = require('../controllers/users');
 const {
-  userSchema,
+  updateUserSchema,
 } = require('../utils/validationSchema');
 
 usersRouter.get('/me', getCurrentUser);
-usersRouter.patch('/me', celebrate(userSchema), updateUserProfile);
+usersRouter.patch('/me', celebrate(updateUserSchema), updateUserProfile);
 
 module.exports = usersRouter;

@@ -16,7 +16,7 @@ const { limiterOptions } = require('./utils/constants');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const {
-  userSchema,
+  createUserSchema,
   loginSchema,
 } = require('./utils/validationSchema');
 
@@ -39,7 +39,7 @@ app.get('/crash-test', () => {
 });
 
 app.post('/signin', celebrate(loginSchema), login);
-app.post('/signup', celebrate(userSchema), createUser);
+app.post('/signup', celebrate(createUserSchema), createUser);
 app.use(auth);
 app.use('/movies', moviesRouter);
 app.use('/users', usersRouter);

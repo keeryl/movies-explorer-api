@@ -19,11 +19,18 @@ const loginSchema = {
   }),
 };
 
-const userSchema = {
+const createUserSchema = {
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     email: Joi.string().required().email(),
     password: Joi.string().required(),
+  }),
+};
+
+const updateUserSchema = {
+  [Segments.BODY]: Joi.object().keys({
+    name: Joi.string().min(2).max(30),
+    email: Joi.string().required().email(),
   }),
 };
 
@@ -71,7 +78,8 @@ const movieIdSchema = {
 };
 
 module.exports = {
-  userSchema,
+  createUserSchema,
+  updateUserSchema,
   loginSchema,
   movieSchema,
   movieIdSchema,
