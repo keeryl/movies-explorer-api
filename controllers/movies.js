@@ -20,11 +20,12 @@ module.exports.createMovie = (req, res, next) => {
     image,
     trailerLink,
     thumbnail,
-    movieId,
+    // movieId,
     nameRU,
     nameEN,
   } = req.body;
   const duration = Number(req.body.duration);
+  const movieId = Number(req.body.movieId);
   Movie.create({
     country,
     director,
