@@ -1,7 +1,7 @@
-const { Joi, Segments } = require('celebrate');
+const { celebrate, Joi, Segments } = require('celebrate');
 const validator = require('validator');
 
-const loginSchema = {
+module.exports.validateSignin = celebrate({
   [Segments.BODY]: Joi.object().keys({
     email: Joi.string().required().custom((value, helper) => {
       if (!validator.isEmail(value)) {
@@ -17,24 +17,24 @@ const loginSchema = {
         'any.required': 'Не указан пароль',
       }),
   }),
-};
+});
 
-const createUserSchema = {
+module.exports.validateSignup = celebrate({
   [Segments.BODY]: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
+    name: Joi.string().required().min(2).max(30),
     email: Joi.string().required().email(),
     password: Joi.string().required(),
   }),
-};
+});
 
-const updateUserSchema = {
+module.exports.validateUpdateUser = celebrate({
   [Segments.BODY]: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
+    name: Joi.string().required().min(2).max(30),
     email: Joi.string().required().email(),
   }),
-};
+});
 
-const movieSchema = {
+module.exports.validateMovie = celebrate({
   [Segments.BODY]: Joi.object().keys({
     country: Joi.string().required(),
     director: Joi.string().required(),
@@ -65,22 +65,14 @@ const movieSchema = {
     }).messages({
       'string.notURL': 'Указан некорректный адрес URL',
     }),
-    movieId: Joi.string().required(),
+    movieId: Joi.number().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
   }),
-};
+});
 
-const movieIdSchema = {
+module.exports.validateMovieId = celebrate({
   [Segments.PARAMS]: Joi.object().keys({
     movieId: Joi.string().required().length(24).hex(),
   }),
-};
-
-module.exports = {
-  createUserSchema,
-  updateUserSchema,
-  loginSchema,
-  movieSchema,
-  movieIdSchema,
-};
+});

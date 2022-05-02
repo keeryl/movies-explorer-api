@@ -57,7 +57,7 @@ module.exports.createUser = (req, res, next) => {
     .then((hash) => User.create({
       email, password: hash, name,
     }))
-    .then((user) => User.findOne({ _id: user._id }))
+    // .then((user) => User.findOne({ _id: user._id }))
     .then((user) => res.send({ user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
