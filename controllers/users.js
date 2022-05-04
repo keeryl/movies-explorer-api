@@ -61,7 +61,7 @@ module.exports.createUser = (req, res, next) => {
     .then((user) => res.send({ user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new RequestError('Некорректные данные при создании карточки'));
+        next(new RequestError('Некорректные данные при создании пользователя'));
       } else {
         next(err);
       }
@@ -70,33 +70,31 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.updateUserProfile = (req, res, next) => {
   const { email, name } = req.body;
-  User.findByIdAndUpdate(
-    req.user._id,
-    { email, name },
-    { new: true, runValidators: true },
-  )
-    .then((user) => {
-      if (!user) {
-        throw new NotFoundError('Пользователь с указанным id не найден.');
+  User.findOne({ email })
+    .then((existingUser) => {
+      if (existingUser) {
+        return new ConflictError('Указанный email принадлежит другому пользователю.');
       }
-      return user;
-    })
-    .then((user) => {
-      User.findOne({ email })
-        .then((existingUser) => {
-          if (existingUser) {
-            return new ConflictError('Указанный email принадлежит другому пользователю.');
+      User.findByIdAndUpdate(
+        req.user._id,
+        { email, name },
+        { new: true, runValidators: true },
+      )
+        .then((user) => {
+          if (!user) {
+            throw new NotFoundError('Пользователь с указанным id не найден.');
           } else {
             return user;
           }
-        });
+        })
+        .then((user) => res.send({ user }))
+        .catch((err) => {
+          if (err.name === 'ValidationError') {
+            next(new RequestError('Некорректные данные при обновлении данных пользователя'));
+          } else {
+            next(err);
+          }
+        })
     })
-    .then((user) => res.send({ user }))
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new RequestError('Некорректные данные при создании карточки'));
-      } else {
-        next(err);
-      }
-    });
+    .catch(next);
 };
