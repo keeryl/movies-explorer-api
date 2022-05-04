@@ -90,7 +90,7 @@ module.exports.updateUserProfile = (req, res, next) => {
             return user;
           }
         })
-        .catch(next);
+        .catch((err) => err);
     })
     .then((user) => res.send({ user }))
     .catch((err) => {
