@@ -57,7 +57,8 @@ module.exports.createUser = (req, res, next) => {
     .then((hash) => User.create({
       email, password: hash, name,
     }))
-    .then((user) => User.findOne({ _id: user._id })) // этот блок нужен, чтобы не возвращалось поле password
+    // блок .then ниже нужен, чтобы не возвращалось поле password
+    .then((user) => User.findOne({ _id: user._id }))
     .then((user) => res.send({ user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
