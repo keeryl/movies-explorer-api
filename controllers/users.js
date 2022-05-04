@@ -86,9 +86,11 @@ module.exports.updateUserProfile = (req, res, next) => {
         .then((existingUser) => {
           if (existingUser) {
             throw new ConflictError('Указанный email принадлежит другому пользователю.');
+          } else {
+            return user;
           }
-        });
-      return user;
+        })
+        .catch(next);
     })
     .then((user) => res.send({ user }))
     .catch((err) => {
