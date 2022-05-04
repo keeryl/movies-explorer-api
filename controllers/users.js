@@ -58,7 +58,7 @@ module.exports.createUser = (req, res, next) => {
       email, password: hash, name,
     }))
     // .then((user) => User.findOne({ _id: user._id }))
-    .then((user) => res.send({ user }))
+    .then((user) => res.send( user.email, user.name, user._id ))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new RequestError('Некорректные данные при создании карточки'));
@@ -79,8 +79,15 @@ module.exports.updateUserProfile = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь с указанным id не найден.');
       }
-      return res.send({ user });
+      return user;
     })
+    .then((user) => {
+      if (User.findOne({ email })) {
+        throw new ConflictError('Указанный email принадлежит другому пользователю.');
+      }
+      return user;
+    })
+    .then((user) => res.send({ user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new RequestError('Некорректные данные при создании карточки'));
