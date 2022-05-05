@@ -6,6 +6,10 @@ const ERROR_409 = 409;
 const ERROR_500 = 500;
 const SALT_ROUNDS = 10;
 
+const CRASH_TEST_MESSAGE = 'Сервер сейчас упадёт';
+const ROUTE_ERROR_MESSAGE = 'Запрошенный роут не существует';
+const SERVER_ERROR_MESSAGE = 'Произошла ошибка на сервере';
+
 const limiterOptions = {
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -21,5 +25,8 @@ module.exports = {
   ERROR_409,
   ERROR_500,
   SALT_ROUNDS,
+  CRASH_TEST_MESSAGE,
+  ROUTE_ERROR_MESSAGE,
+  SERVER_ERROR_MESSAGE,
   limiterOptions,
 };
