@@ -74,7 +74,7 @@ module.exports.updateUserProfile = (req, res, next) => {
   User.findOne({ email })
     .then((existingUser) => {
       console.log(existingUser)
-      if (existingUser._id !== req.user._id) {
+      if (existingUser._id.toString() !== req.user._id) {
         throw new ConflictError('Указанный email принадлежит другому пользователю.');
       }
       return User.findByIdAndUpdate(
