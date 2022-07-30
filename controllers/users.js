@@ -76,12 +76,13 @@ module.exports.updateUserProfile = (req, res, next) => {
       console.log(existingUser)
       if (existingUser !== null && existingUser._id.toString() !== req.user._id) {
         throw new ConflictError('Указанный email принадлежит другому пользователю.');
+      } else {
+        return User.findByIdAndUpdate(
+          req.user._id,
+          { email, name },
+          { new: false, runValidators: true },
+        );
       }
-      return User.findByIdAndUpdate(
-        req.user._id,
-        { email, name },
-        { new: true, runValidators: true },
-      );
     })
     .then((user) => {
       if (!user) {
