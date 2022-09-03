@@ -11,5 +11,6 @@ Start project with
 
 ### Additional info
 
-domain name: api.keerzy.nomoredomains.work
+Domain name: api.keerzy.nomoredomains.work
+
 Server ip adress: 51.250.83.219
