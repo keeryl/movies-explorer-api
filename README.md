@@ -6,7 +6,7 @@ This is a backend part for diploma project developed, using Node.js/Express.js, 
 
 ### Getting started
 
-Start project with 
+Start project with hot reload using: npm run dev
 
 
 ### Additional info
