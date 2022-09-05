@@ -29,7 +29,8 @@ https//:api.keerzy.nomoredomains.work
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `name` | `string` | **Required**. Your API key |
+| `email` | `string` | **Required**. user email |
+| `password` | `string` | **Required**. user password |
 
 #### Signup user
 
@@ -39,7 +40,21 @@ https//:api.keerzy.nomoredomains.work
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
+| `name`      | `string` | **Required**. user name |
+| `email`      | `string` | **Required**. user email |
+| `password`      | `string` | **Required**. user password |
+
+#### Update user profile
+
+```http
+  PATCH /users/me
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `name`      | `string` | **Required**. user name |
+| `email`      | `string` | **Required**. user email |
+
 
 ## Run Locally
 
