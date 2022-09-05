@@ -12,7 +12,7 @@ This is a backend part for diploma project developed, using Node.js/Express.js, 
 Clone the project
 
 ```bash
-  git clone ––––
+  git clone https://github.com/keeryl/movies-explorer-api.git
 ```
 
 Go to the project directory
