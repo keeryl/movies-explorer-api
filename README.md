@@ -29,7 +29,7 @@ https//:api.keerzy.nomoredomains.work
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `name`    | `string` | **Required**. Your API key |
+| `name` | `string` | **Required**. Your API key |
 
 #### Signup user
 
