@@ -17,44 +17,6 @@ API for movies-explorer-frontend project developed, using Node.js, Express.js, M
 
 – Error logging
 
-## API Reference
-
-https//:api.keerzy.nomoredomains.work
-
-#### Signin user
-
-```http
-  POST /signin
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `email` | `string` | **Required**. user email |
-| `password` | `string` | **Required**. user password |
-
-#### Signup user
-
-```http
-  POST /signup
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `name`      | `string` | **Required**. user name |
-| `email`      | `string` | **Required**. user email |
-| `password`      | `string` | **Required**. user password |
-
-#### Update user profile
-
-```http
-  PATCH /users/me
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `name`      | `string` | **Required**. user name |
-| `email`      | `string` | **Required**. user email |
-
 
 ## Run Locally
 
