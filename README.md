@@ -5,7 +5,7 @@
 
 ## Description
 
-This is a backend part for diploma project developed, using Node.js/Express.js, MongoDB, Mongoose.js
+API for movies-explorer-frontend project developed, using Node.js, Express.js, MongoDB, Mongoose.js
 
 ## Features
 
