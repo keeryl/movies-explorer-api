@@ -3,9 +3,19 @@
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
-## Description:
+## Description
 
 This is a backend part for diploma project developed, using Node.js/Express.js, MongoDB, Mongoose.js
+
+## Features
+
+– Authorization
+
+– Error handling with custom errors
+
+– Validation middleware
+
+– Error logging
 
 ## Run Locally
 
