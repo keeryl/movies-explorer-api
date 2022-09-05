@@ -9,7 +9,13 @@ API for movies-explorer-frontend project developed, using Node.js, Express.js, M
 
 ## Features
 
-– Authorization
+– Registration and authorization
+
+– Update user info
+
+– Create and delete movie
+
+– Add and remove like
 
 – Error handling with custom errors
 
