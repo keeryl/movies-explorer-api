@@ -17,6 +17,28 @@ API for movies-explorer-frontend project developed, using Node.js, Express.js, M
 
 – Error logging
 
+## API Reference
+
+#### Signin user
+
+```http
+  POST /signin
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. Your API key |
+
+#### Signup user
+
+```http
+  POST /api/items/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
+
 ## Run Locally
 
 Clone the project
