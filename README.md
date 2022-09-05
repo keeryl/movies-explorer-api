@@ -19,6 +19,8 @@ API for movies-explorer-frontend project developed, using Node.js, Express.js, M
 
 ## API Reference
 
+https//:api.keerzy.nomoredomains.work
+
 #### Signin user
 
 ```http
@@ -27,12 +29,12 @@ API for movies-explorer-frontend project developed, using Node.js, Express.js, M
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
+| `name`    | `string` | **Required**. Your API key |
 
 #### Signup user
 
 ```http
-  POST /api/items/${id}
+  POST /signup
 ```
 
 | Parameter | Type     | Description                       |
