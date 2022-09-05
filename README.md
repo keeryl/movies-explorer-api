@@ -7,10 +7,31 @@
 
 This is a backend part for diploma project developed, using Node.js/Express.js, MongoDB, Mongoose.js
 
-## Getting started
+## Run Locally
 
-Start project with hot reload using: npm run dev
+Clone the project
 
+```bash
+  git clone ––––
+```
+
+Go to the project directory
+
+```bash
+  cd <project directory>
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
 
 ## Additional info
 
