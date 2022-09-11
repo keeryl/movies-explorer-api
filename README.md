@@ -24,7 +24,7 @@ API for movies-explorer-frontend project developed, using Node.js, Express.js, M
 – Error logging
 
 
-## Run Locally
+## Running Locally
 
 Clone the project
 
