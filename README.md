@@ -5,7 +5,7 @@
 
 ## Description
 
-API for movies-explorer-frontend project developed, using Node.js, Express.js, MongoDB, Mongoose.js
+REST API for movies-explorer-frontend project (https://github.com/keeryl/movies-explorer-frontend) developed, using Node.js, Express.js, MongoDB, Mongoose.js
 
 ## Features
 
