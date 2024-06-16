@@ -1,18 +1,21 @@
 #!/bin/bash
 ls
-curl -fsSL https://repo.mongodb.prakticum-team.ru/keys/server-4.4.asc | sudo apt-key add -
 
-echo "deb [ arch=amd64 ] https://repo.mongodb.prakticum-team.ru/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+node -v
 
-sudo apt update
+# curl -fsSL https://repo.mongodb.prakticum-team.ru/keys/server-4.4.asc | sudo apt-key add -
 
-sudo apt install -y mongodb-org
+# echo "deb [ arch=amd64 ] https://repo.mongodb.prakticum-team.ru/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 
-sudo service mongod start
+# sudo apt update
 
-sudo systemctl enable mongod.service
+# sudo apt install -y mongodb-org
 
-sudo npm install
+# sudo service mongod start
 
-npm run build
-npm run start
+# sudo systemctl enable mongod.service
+
+# sudo npm install
+
+# npm run build
+# npm run start
