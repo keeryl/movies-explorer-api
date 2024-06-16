@@ -1,4 +1,4 @@
-FROM mongo-express
+FROM mongo
 WORKDIR var/app
 COPY . .
 EXPOSE 3000
