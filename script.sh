@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ls
 curl -fsSL https://repo.mongodb.prakticum-team.ru/keys/server-4.4.asc | sudo apt-key add -
 
 echo "deb [ arch=amd64 ] https://repo.mongodb.prakticum-team.ru/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
@@ -13,6 +13,6 @@ sudo service mongod start
 sudo systemctl enable mongod.service
 
 sudo npm install
-ls
+
 npm run build
 npm run start
