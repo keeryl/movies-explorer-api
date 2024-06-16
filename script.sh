@@ -1,6 +1,6 @@
 #!/bin/bash
 ls
-
+sudo apt install -y nodejs
 node -v
 
 # echo 'http://dl-cdn.alpinelinux.org/alpine/v3.9/main' >> /etc/apk/repositories
