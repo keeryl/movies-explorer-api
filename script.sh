@@ -12,7 +12,7 @@ sudo service mongod start
 
 sudo systemctl enable mongod.service
 
-npm install
-
-npm run build
-npm run start
+sudo npm install
+ls
+sudo npm run build
+sudo npm run start
