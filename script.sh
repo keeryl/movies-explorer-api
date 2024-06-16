@@ -1,5 +1,6 @@
 #!/bin/bash
 ls
+chmod -x script.sh
 apt install -y nodejs
 node -v
 
