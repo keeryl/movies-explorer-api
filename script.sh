@@ -1,7 +1,6 @@
 #!/bin/bash
 ls
-chmod -x script.sh
-apt install -y nodejs
+apt-get install -y node npm
 node -v
 
 # echo 'http://dl-cdn.alpinelinux.org/alpine/v3.9/main' >> /etc/apk/repositories
