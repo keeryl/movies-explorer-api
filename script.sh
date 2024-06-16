@@ -14,7 +14,7 @@ mongo -version
 # sudo apt install -y mongodb-org
 
 mongod start
-mongod status
+sudo systemctl status mongod
 
 # systemctl enable mongod.service
 
