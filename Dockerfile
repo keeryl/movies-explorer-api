@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM mongo-express
 WORKDIR var/app
 COPY . .
 EXPOSE 3000
