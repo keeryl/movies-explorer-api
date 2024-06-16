@@ -13,10 +13,10 @@ mongo -version
 
 # sudo apt install -y mongodb-org
 
-sudo service mongod start
+service mongod start
 
-sudo systemctl enable mongod.service
+systemctl enable mongod.service
 
-sudo npm install
+npm install
 
 npm run start
