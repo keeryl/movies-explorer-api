@@ -1,6 +1,6 @@
 #!/bin/bash
 ls
-apt-get install -y node npm
+apk add nodejs npm
 node -v
 
 # echo 'http://dl-cdn.alpinelinux.org/alpine/v3.9/main' >> /etc/apk/repositories
