@@ -12,7 +12,7 @@ services:
     name: movies-explorers-db
     runtime: image
     image:
-      - url: docker.io/library/mongo:latest
+      url: docker.io/library/mongo:latest
     # runtime: docker
     # dockerfilePath: ./search/Dockerfile
     # envVars:
