@@ -20,7 +20,7 @@ const {
 
 const app = express();
 mongoose.connect(
-  NODE_ENV === 'production' ? DATABASE : 'mongodb://localhost:27017/moviesdb',
+  NODE_ENV === 'production' ? DATABASE : 'mongodb://mongo:27017/moviesdb',
   {
     useNewUrlParser: true,
   },

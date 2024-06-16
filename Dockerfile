@@ -1,6 +1,5 @@
-FROM mongo
-WORKDIR var/app
+FROM ubuntu:focal
 COPY . .
-EXPOSE 3000
-EXPOSE 27017
 RUN sh script.sh
+EXPOSE 27017
+# CMD ["npm", "start"]
