@@ -19,5 +19,4 @@ sudo systemctl enable mongod.service
 
 sudo npm install
 
-npm run build
 npm run start
