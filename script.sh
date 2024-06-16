@@ -15,8 +15,8 @@ mongo -version
 
 service mongod start
 
-systemctl enable mongod.service
+# systemctl enable mongod.service
 
-npm install
+# npm install
 
-npm run start
+# npm run start
