@@ -10,7 +10,9 @@ services:
   - type: web
     plan: free
     name: movies-explorers-db
-    image: docker.io/library/mongo:latest
+    runtime: docker
+    image:
+      url: docker.io/library/mongo:latest
     # runtime: docker
     # dockerfilePath: ./search/Dockerfile
     # envVars:
