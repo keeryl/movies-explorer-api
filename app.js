@@ -19,12 +19,15 @@ const {
 } = require('./utils/constants');
 
 const app = express();
-mongoose.connect(
-  NODE_ENV === 'production' ? DATABASE : 'mongodb://mongo:27017/moviesdb',
-  {
-    useNewUrlParser: true,
-  },
-);
+  mongoose.connect(
+    NODE_ENV === 'production' ? DATABASE : 'mongodb://127.0.0.1:27017/moviesdb',
+    {
+      useNewUrlParser: true,
+    },
+  )
+  .then(() => {console.log("DATABASE CONNECTED")})
+  .catch((err) => {console.log(`ERROR ON CONNECTION: ${err}`)})
+
 app.use(requestLogger);
 app.use(rateLimiter(limiterOptions));
 app.use(helmet());
